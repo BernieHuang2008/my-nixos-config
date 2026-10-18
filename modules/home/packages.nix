@@ -12,5 +12,6 @@
     openssh
     onlyoffice-desktopeditors
     yazi
+    lig
   ];
 }

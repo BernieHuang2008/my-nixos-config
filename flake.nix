@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lig-completion.url = "github:BernieHuang2008/lig-completion";
+    lig-completion.url = "github:BernieHuang2008/lig-completion-flake";
   };
 
   outputs = { self, nixpkgs, monique, home-manager, lig-completion, ... }@inputs: {
@@ -23,7 +23,6 @@
 
       modules = [
         ./hosts/bh-laptop-1
-        { nixpkgs.overlays = [ inputs.lig-completion.overlays.default ]; }
       ];
     };
   };

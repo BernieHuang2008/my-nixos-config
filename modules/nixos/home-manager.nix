@@ -5,6 +5,12 @@
 
   home-manager = {
     backupFileExtension = "backup";
-    users.bernie = import ../home;
+
+    extraSpecialArgs = { inherit inputs; };
+
+    users.bernie = {
+      imports = [ ../home ];
+      nixpkgs.overlays = [ inputs.lig-completion.overlays.default ];
+    };
   };
 }

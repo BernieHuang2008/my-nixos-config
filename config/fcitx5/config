@@ -7,11 +7,15 @@ EnumerateForwardKeys=
 EnumerateBackwardKeys=
 # 轮换输入法时跳过第一个输入法
 EnumerateSkipFirst=False
+# 向前切换输入法分组
+EnumerateGroupForwardKeys=
+# 向后切换输入法分组
+EnumerateGroupBackwardKeys=
 # 触发修饰键快捷键的时限 (毫秒)
 ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
-0=Control+space
+0=Super+space
 1=Zenkaku_Hankaku
 2=Control+Control_L
 
@@ -23,12 +27,6 @@ ModifierOnlyKeyTimeout=250
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
-
-[Hotkey/EnumerateGroupForwardKeys]
-0=Super+space
-
-[Hotkey/EnumerateGroupBackwardKeys]
-0=Shift+Super+space
 
 [Hotkey/PrevPage]
 0=Up

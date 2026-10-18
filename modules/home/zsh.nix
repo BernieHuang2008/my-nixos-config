@@ -1,5 +1,5 @@
 # zsh + oh-my-zsh + powerlevel10k + 用户别名。
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
     zsh-powerlevel10k
@@ -34,7 +34,17 @@
       plugins = [ "git" ];
     };
 
-    initContent = "source ~/.p10k.zsh";
+    initContent = lib.mkMerge [
+      (lib.mkOrder 500 ''
+        eval "$(${pkgs.lig}/bin/lig init zsh pre)"
+      '')
+      (lib.mkOrder 1000 ''
+        source ~/.p10k.zsh
+      '')
+      (lib.mkOrder 2000 ''
+        eval "$(${pkgs.lig}/bin/lig init zsh post)"
+      '')
+    ]; 
   };
 
   # 将 p10k 主题配置纳入 dotfiles 管理；

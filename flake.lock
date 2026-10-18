@@ -21,9 +21,27 @@
         "type": "github"
       }
     },
-    "monique": {
+    "lig-completion": {
       "inputs": {
         "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1792311166,
+        "narHash": "sha256-3usiE91s2GLWg2KT+VQcLK5qtFWXf4pyJOiGhfYOChY=",
+        "owner": "BernieHuang2008",
+        "repo": "lig-completion-flake",
+        "rev": "1b898a1360d7a777c98704714ce066ec746b1b90",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BernieHuang2008",
+        "repo": "lig-completion-flake",
+        "type": "github"
+      }
+    },
+    "monique": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1790777915,
@@ -41,6 +59,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1792094642,
+        "narHash": "sha256-zp8ToDMnqZcu4o4IH9pdwXFXGp7yLm/M0dEnNWnyd7I=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fe13242281a67641c0102cdb1087f0ebe586c7df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1783224372,
         "narHash": "sha256-FGQ8TfSm9WviNE/fQAWsKs+y4GkX8fU4EScewpw54Y8=",
         "rev": "d407951447dcd00442e97087bf374aad70c04cea",
@@ -52,7 +86,7 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1792030654,
         "narHash": "sha256-OaQwAtPMTjQiY2sT/2/62UbSPhzP/0aDnWzMm/NCiUw=",
@@ -71,8 +105,9 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "lig-completion": "lig-completion",
         "monique": "monique",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },
