@@ -8,7 +8,6 @@ result-*
 .DS_Store
 
 # 敏感配置（rclone.conf 含 pass，绝不提交）
-modules/nixos/users.nix
 config/rclone/
 secrets/
 *.local.nix
