@@ -2,7 +2,7 @@
 { ... }:
 {
   # 确保 PulseAudio 被禁用，避免与 PipeWire 冲突。
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # rtkit 负责管理音频进程的实时优先级，强烈建议启用。
   security.rtkit.enable = true;
