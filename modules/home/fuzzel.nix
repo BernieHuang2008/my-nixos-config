@@ -6,8 +6,8 @@
 
     settings = {
       main = {
-        font = "JetBrains Mono Nerd Font";
-        lines = 5;
+        font = "JetBrains Mono Nerd Font:size=16";
+        lines = 7;
         auto-select = true;
         terminal = "${pkgs.alacritty}/bin/alacritty";
       };
