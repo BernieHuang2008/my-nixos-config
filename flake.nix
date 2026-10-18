@@ -9,9 +9,11 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lig-completion.url = "github:BernieHuang2008/lig-completion"
   };
 
-  outputs = { self, nixpkgs, monique, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, monique, home-manager, lig-completion, ... }@inputs: {
     # 每台主机在此登记；`nixos-rebuild --flake ~/dotfiles#bh-laptop-1` 即可。
     nixosConfigurations."bh-laptop-1" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -21,6 +23,7 @@
 
       modules = [
         ./hosts/bh-laptop-1
+        { nixpkgs.overlays = [ inputs.lig-completion.overlays.default ]; }
       ];
     };
   };
