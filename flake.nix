@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lig-completion.url = "github:BernieHuang2008/lig-completion"
+    lig-completion.url = "github:BernieHuang2008/lig-completion";
   };
 
   outputs = { self, nixpkgs, monique, home-manager, lig-completion, ... }@inputs: {
