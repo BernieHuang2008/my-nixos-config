@@ -8,6 +8,7 @@
     ./fuzzel.nix
     ./alacritty.nix
     ./mako.nix
+    ./xdg.nix
   ];
 
   home.username = "bernie";
