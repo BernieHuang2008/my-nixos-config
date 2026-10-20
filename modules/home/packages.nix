@@ -14,5 +14,6 @@
     onlyoffice-desktopeditors
     yazi
     lig
+    swaybg
   ];
 }
