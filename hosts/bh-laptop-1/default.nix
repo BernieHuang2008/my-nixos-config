@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../hardware
     ../../modules/nixos
   ];
 
