@@ -20,5 +20,6 @@
     ./audio.nix
     ./rclone-bh-svr-0.nix
     ./clash.nix
+    ./fingerprint.nix
   ];
 }

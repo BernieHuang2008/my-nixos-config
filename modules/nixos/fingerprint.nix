@@ -1,9 +1,21 @@
 # modules/nixos/fingerprint.nix
 { config, pkgs, lib, ... }:
-
 {
   # 基础启用
   services.fprintd.enable = true;
+  # systemd.packages = [ pkgs.fprintd ];
+
+  # 显式定义 systemd 服务单元，确保 systemd 能识别它
+#   systemd.services.fprintd = {
+#     description = "Fingerprint Authentication Daemon";
+#     wantedBy = [ "multi-user.target" ];
+#     serviceConfig = {
+#       Type = "dbus";
+#       BusName = "net.reactivated.Fprint";
+#       ExecStart = "${pkgs.fprintd}/libexec/fprintd";
+#       StateDirectory = "fprint"; # 保留你之前的设置，确保 /var/lib/fprint 存在
+#     };
+#   };
 
   # 如果基础启用无效，取消下面几行的注释并填入正确的驱动
   # services.fprintd.tod.enable = true;

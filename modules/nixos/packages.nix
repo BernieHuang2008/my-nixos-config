@@ -10,5 +10,7 @@
     zsh-powerlevel10k
     onlyoffice-desktopeditors
     chromium
+    usbutils
+    fprintd
   ];
 }
