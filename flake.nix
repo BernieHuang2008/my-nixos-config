@@ -11,6 +11,11 @@
     };
 
     lig-completion.url = "github:BernieHuang2008/lig-completion-flake";
+
+    mark-shot = {
+      url = "github:jswysnemc/mark-shot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, monique, home-manager, lig-completion, ... }@inputs: {

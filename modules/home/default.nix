@@ -10,6 +10,7 @@
     ./mako.nix
     ./xdg.nix
     ./swayosd.nix
+    ./markshot.nix
   ];
 
   home.username = "bernie";
