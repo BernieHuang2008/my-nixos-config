@@ -8,6 +8,12 @@
   boot.loader.limine = {
     enable = true;
     maxGenerations = 5;
+
+    # Secure Boot
+    secureBoot.enable = true;
+    enableEditor = false;
+    
+    # 双系统
     extraConfig = ''
       remember_last_entry: yes
     '';
