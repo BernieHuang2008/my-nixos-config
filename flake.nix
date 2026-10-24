@@ -23,6 +23,13 @@
 
       modules = [
         ./hosts/bh-laptop-1
+        {
+          nixpkgs.overlays = [
+            (final: prev: {
+              pam-fprint-grosshack = final.callPackage ./pkgs/pam-fprint-grosshack.nix { };
+            })
+          ];
+        }
       ];
     };
   };
