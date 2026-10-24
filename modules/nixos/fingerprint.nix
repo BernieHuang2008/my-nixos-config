@@ -26,7 +26,10 @@ in
 
   security.pam.services = {
     sudo.text = lib.mkDefault (lib.mkBefore grosshackMitigated);
-    greetd.text = lib.mkDefault (lib.mkBefore grosshackInteractive);
+    greetd = {
+      fprintAuth = true;
+      rules.auth.fprintd.settings.timeout = 5;
+    };
 
     # ⚠️ 安全警告：通常建议保持 login 的指纹认证关闭。
     # 因为有些情况下启用后可能会导致无法使用密码登录，增加被锁在系统外的风险。
