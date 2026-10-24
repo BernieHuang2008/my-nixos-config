@@ -9,6 +9,7 @@
     ./alacritty.nix
     ./mako.nix
     ./xdg.nix
+    ./swayosd.nix
   ];
 
   home.username = "bernie";
