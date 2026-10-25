@@ -2,6 +2,7 @@
 {
   imports = [
     ./screen.nix
+    ./bluetooth.nix
   ];
 
 }
