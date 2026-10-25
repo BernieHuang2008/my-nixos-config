@@ -9,6 +9,9 @@
     # 简体中文
     source-han-sans                  # 思源黑体
     source-han-serif                 # 思源宋体
+
+    # 微软核心字体
+    corefonts
   ];
 
   # 字体偏好
