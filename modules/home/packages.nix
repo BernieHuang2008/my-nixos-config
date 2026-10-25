@@ -11,7 +11,6 @@
     python3
     openssh
     xwayland-satellite
-    onlyoffice-desktopeditors
     yazi
     swaybg
   ];

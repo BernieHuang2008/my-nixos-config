@@ -22,5 +22,6 @@
     ./clash.nix
     ./fingerprint.nix
     ./chromium.nix
+    ./onlyoffice.nix
   ];
 }
