@@ -23,5 +23,6 @@
     ./fingerprint.nix
     ./chromium.nix
     ./onlyoffice.nix
+    ./cf-warp.nix
   ];
 }
