@@ -12,6 +12,7 @@
     ./swayosd.nix
     ./markshot.nix
     ./lig.nix
+    ./rclone/code-sync.nix
   ];
 
   home.username = "bernie";
@@ -19,4 +20,6 @@
   home.stateVersion = "26.05";
 
   nixpkgs.config.allowUnfree = true;
+
+  my.services.code-sync.enable = true;
 }
