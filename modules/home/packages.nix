@@ -13,7 +13,6 @@
     xwayland-satellite
     onlyoffice-desktopeditors
     yazi
-    lig
     swaybg
   ];
 }

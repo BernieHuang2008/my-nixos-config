@@ -11,6 +11,7 @@
     ./xdg.nix
     ./swayosd.nix
     ./markshot.nix
+    ./lig.nix
   ];
 
   home.username = "bernie";

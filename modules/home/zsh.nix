@@ -35,14 +35,8 @@
     };
 
     initContent = lib.mkMerge [
-      (lib.mkOrder 500 ''
-        eval "$(${pkgs.lig}/bin/lig init zsh pre)"
-      '')
       (lib.mkOrder 1000 ''
         source ~/.p10k.zsh
-      '')
-      (lib.mkOrder 2000 ''
-        eval "$(${pkgs.lig}/bin/lig init zsh post)"
       '')
     ]; 
   };

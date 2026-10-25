@@ -10,7 +10,6 @@
 
     users.bernie = {
       imports = [ ../home ];
-      nixpkgs.overlays = [ inputs.lig-completion.overlays.default ];
     };
   };
 }
