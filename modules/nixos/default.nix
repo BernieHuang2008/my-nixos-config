@@ -24,5 +24,6 @@
     ./chromium.nix
     ./onlyoffice.nix
     ./cf-warp.nix
+    ./steam.nix
   ];
 }

@@ -13,6 +13,7 @@
     ./markshot.nix
     ./lig.nix
     ./rclone/code-sync.nix
+    ./games/minecraft.nix
   ];
 
   home.username = "bernie";
