@@ -62,6 +62,25 @@
 - `window-rules.kdl` — 窗口规则。
 - `monitors.kdl`     — Monique 生成的显示器配置，请勿手改。
 
+## Phoenix STT
+
+语音输入 daemon 来自独立的 flake 输入 `github:BernieHuang2008/phoenix-stt`：
+
+- 包：`inputs.phoenix-stt.packages.${pkgs.system}.default`
+- 启动：niri `spawn-at-startup "phoenix-stt" "daemon"`
+- 快捷键：`Mod+Shift+D`（开始/停止录音）
+- 配置：`config/phoenix-ai/stt.toml` → `~/.config/phoenix-ai/config/stt.toml`
+- 密钥：`~/.config/phoenix-ai/secrets/models.json`（手动管理，权限 600，不纳入仓库）
+- whisper 模型：`~/.local/share/phoenix-ai/models/ggml-small-q5_1.bin`
+
+模型下载地址：
+
+```bash
+mkdir -p ~/.local/share/phoenix-ai/models
+curl -L -o ~/.local/share/phoenix-ai/models/ggml-small-q5_1.bin \
+  https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small-q5_1.bin
+```
+
 ## 添加新软件
 
 - **系统级**：在 `modules/nixos/<领域>/` 下新建 `xxx.nix`，加入该领域 `default.nix` 的 `imports`。

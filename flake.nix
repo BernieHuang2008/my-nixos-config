@@ -19,6 +19,11 @@
       url = "github:KevenGoncalves/lig";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    phoenix-stt = {
+      url = "github:BernieHuang2008/phoenix-stt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, monique, home-manager, ... }@inputs: {

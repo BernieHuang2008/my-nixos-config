@@ -1,5 +1,5 @@
 # 用户级常驻软件与命令行工具。
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     wget
@@ -18,5 +18,6 @@
     xwayland-satellite
     yazi
     swaybg
+    inputs.phoenix-stt.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

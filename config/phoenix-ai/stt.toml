@@ -1,0 +1,42 @@
+# Phoenix STT 配置
+# 文档：phoenix-stt --help / phoenix-stt doctor
+# 密钥：~/.config/phoenix-ai/secrets/models.json（不纳入仓库）
+
+[whisper]
+model = "~/.local/share/phoenix-ai/models/ggml-small-q5_1.bin"
+bin = "whisper-cli"
+language = "zh"
+threads = 4
+
+[audio]
+command = ["pw-record", "--rate", "16000", "--channels", "1", "--format", "s16", "--raw", "-"]
+sample_rate = 16000
+chunk_secs = 10
+overlap_secs = 1
+
+[llm]
+# models.json 中的条目名。切换外部模型时改这里。
+model = "ling-flash"
+# 可选：直接覆盖 endpoint / API model 名（通常留空）
+# endpoint = "http://127.0.0.1:4444/v1/chat/completions"
+# model_name = "qwen3-4b-thinking"
+prompt = "你是一个中文语音输入法的后处理器。请把下面的语音识别结果整理成通顺、自然、适合直接输入到编辑器里的文本：修正错别字和标点，去掉口头禅和重复词，不要添加原文没有的信息。只输出最终文本，不要解释，不要使用 Markdown，不要输出思考过程。"
+timeout_secs = 180
+max_tokens = 1024
+temperature = 0.2
+curl_bin = "curl"
+
+[ui]
+enabled = true
+scale = 1.5
+
+[ipc]
+# socket = "/run/user/1000/phoenix-stt.sock"
+
+[clipboard]
+bin = "wl-copy"
+
+[paste]
+enabled = true
+shortcut = "ctrl+v"
+terminal_shortcut = "ctrl+shift+v"

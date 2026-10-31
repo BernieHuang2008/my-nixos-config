@@ -25,6 +25,7 @@ layout {
 
 spawn-at-startup "fcitx5"
 spawn-at-startup "swaybg" "-i" "/home/bernie/.wall-paper.png" "-m" "fill"
+spawn-at-startup "phoenix-stt" "daemon"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"

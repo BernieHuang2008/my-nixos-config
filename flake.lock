@@ -127,13 +127,34 @@
         "type": "github"
       }
     },
+    "phoenix-stt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793442274,
+        "narHash": "sha256-mMNG4af9pkfsXpLxVHlAfC3IzGM8R3gjtq4gKeacR8Y=",
+        "owner": "BernieHuang2008",
+        "repo": "phoenix-stt",
+        "rev": "ae12ae387ba111fef3abf27a2424d5d3215fcd5f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BernieHuang2008",
+        "repo": "phoenix-stt",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "lig": "lig",
         "mark-shot": "mark-shot",
         "monique": "monique",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "phoenix-stt": "phoenix-stt"
       }
     },
     "systems": {

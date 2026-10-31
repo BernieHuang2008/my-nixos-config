@@ -20,6 +20,9 @@ in
   xdg.configFile."fcitx5/config".source  = link "config/fcitx5/config";
   xdg.configFile."fcitx5/profile".source = link "config/fcitx5/profile";
 
+  # Phoenix STT：语音输入配置；密钥仍在 ~/.config/phoenix-ai/secrets，不纳入仓库
+  xdg.configFile."phoenix-ai/config/stt.toml".source = link "config/phoenix-ai/stt.toml";
+
   # VSCode：只收用户设置与代码片段
   xdg.configFile."Code/User/settings.json".source = link "config/Code/User/settings.json";
   xdg.configFile."Code/User/snippets".source      = link "config/Code/User/snippets";
