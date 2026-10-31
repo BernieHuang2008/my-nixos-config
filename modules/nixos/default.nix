@@ -9,7 +9,8 @@
     ./fonts.nix
     ./users.nix
     ./zsh.nix
-    ./vim.nix
+#   ./vim.nix
+    ./neovim.nix
     ./docker.nix
     ./greetd.nix
     ./niri.nix

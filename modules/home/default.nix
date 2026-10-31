@@ -14,6 +14,7 @@
     ./lig.nix
     ./rclone/code-sync.nix
     ./games/minecraft.nix
+    ./lazygit.nix
   ];
 
   home.username = "bernie";
