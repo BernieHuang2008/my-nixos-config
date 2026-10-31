@@ -1,7 +1,12 @@
 // niri 窗口规则。
 
-// Firefox 画中画窗口默认浮动。
+// clipse 剪切板：作为悬浮窗启动
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="clipse"
     open-floating true
+
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.6; }
+    geometry-corner-radius 12
 }
+

@@ -3,5 +3,6 @@
 {
   imports = [
     ./lazygit.nix
+    ./clipse.nix
   ];
 }
