@@ -15,7 +15,7 @@
       SelectedTitle      = "#FF69B4";
       NormalDesc         = "#808080";
       DimmedDesc         = "#808080";
-      SelectedDesc       = "#FF69B4";
+      SelectedDesc       = "#808080";
       StatusMsg          = "#2ecc71";
       PinIndicatorColor  = "#FFD700";
       SelectedBorder     = "#3498db";
