@@ -12,7 +12,12 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
+      # Command Alias
       ll = "ls -all";
+      # App Alias
+      l = "lazygit";
+      y = "yazi";
+      v = "neovim";
     };
 
     history = {

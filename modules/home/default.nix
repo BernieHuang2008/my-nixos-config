@@ -2,6 +2,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./neovim.nix
     ./packages.nix
     ./zsh.nix
     ./fcitx5.nix
