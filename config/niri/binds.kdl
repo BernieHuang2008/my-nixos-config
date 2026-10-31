@@ -7,7 +7,7 @@ binds {
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-    Super+Shift+V { spawn "alacritty" "--class" "clipse" "-e" "clipse"; }
+    Super+Shift+V { spawn "alacritty" "--class" "clipse" "-o" "window.opacity=1.0" "-e" "clipse"; }
     Menu { spawn "phoenix-stt" "toggle"; }
     XF86Assistant { spawn "phoenix-stt" "toggle"; }
 
