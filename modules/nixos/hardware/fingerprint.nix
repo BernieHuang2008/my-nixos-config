@@ -1,4 +1,4 @@
-# modules/nixos/fingerprint.nix
+# 指纹识别：fprintd + PAM 配置，包含 sudo 场景的 CVE 缓解。
 { config, pkgs, lib, ... }:
 
 let

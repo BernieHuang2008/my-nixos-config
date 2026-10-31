@@ -9,7 +9,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users.bernie = {
-      imports = [ ../home ];
+      imports = [ ../../home ];
     };
   };
 }

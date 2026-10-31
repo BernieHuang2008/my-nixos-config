@@ -1,4 +1,4 @@
-# modules/home/neovim.nix
+# neovim：编辑器本体 + 将仓库内 config/nvim 链接到 ~/.config/nvim。
 { config, pkgs, lib, ... }:
 
 let

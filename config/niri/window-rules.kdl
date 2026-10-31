@@ -1,0 +1,7 @@
+// niri 窗口规则。
+
+// Firefox 画中画窗口默认浮动。
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}

@@ -1,22 +1,17 @@
-# Home Manager 用户层总入口：只负责导入各程序模块 + 基础信息。
+# Home Manager 用户层总入口：只负责导入各领域模块 + 基础信息。
 { pkgs, ... }:
 {
   imports = [
-    ./neovim.nix
     ./packages.nix
-    ./zsh.nix
-    ./fcitx5.nix
-    ./fuzzel.nix
-    ./alacritty.nix
-    ./mako.nix
     ./xdg.nix
-    ./swayosd.nix
-    ./markshot.nix
+    ./shells
+    ./desktop
+    ./editors
+    ./apps
+    ./games
+    ./services
     ./lig.nix
-    ./rclone/code-sync.nix
-    ./games/minecraft.nix
-    ./lazygit.nix
-    ./opencode.nix
+    ./markshot.nix
   ];
 
   home.username = "bernie";
@@ -25,5 +20,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # 默认启用 rclone code-sync 用户服务。
   my.services.code-sync.enable = true;
 }

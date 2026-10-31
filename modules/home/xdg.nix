@@ -13,9 +13,8 @@ in
   # btop：btop.conf + themes/
   xdg.configFile."btop".source = link "config/btop";
 
-  # niri：只链接两个静态文件，不碰 config.kdl.bak
-  xdg.configFile."niri/config.kdl".source   = link "config/niri/config.kdl";
-  xdg.configFile."niri/monitors.kdl".source = link "config/niri/monitors.kdl";
+  # niri：整目录链接，config.kdl 内部通过 include 引入其余文件。
+  xdg.configFile."niri".source = link "config/niri";
 
   # fcitx5：全局设置 + 输入法列表（conf/ 目录暂不管，需要时再加）
   xdg.configFile."fcitx5/config".source  = link "config/fcitx5/config";

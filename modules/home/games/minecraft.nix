@@ -1,4 +1,4 @@
-# modules/home/minecraft.nix
+# Minecraft：HMCL 启动器。
 { pkgs, ... }:
 
 {

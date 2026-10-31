@@ -12,6 +12,12 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
+      # NixOS 重建快捷方式
+      nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#bh-laptop-1";
+      nrt = "sudo nixos-rebuild test   --flake ~/dotfiles#bh-laptop-1";
+      nrb = "sudo nixos-rebuild boot   --flake ~/dotfiles#bh-laptop-1";
+      ngc = "sudo nix-collect-garbage -d";
+
       # Command Alias
       ll = "ls -all";
       # App Alias

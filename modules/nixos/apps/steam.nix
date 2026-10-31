@@ -1,4 +1,4 @@
-# modules/nixos/steam.nix
+# Steam：启用 Steam 客户端及远程同乐 / 本地传输所需端口。
 { config, pkgs, lib, ... }:
 
 {
