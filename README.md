@@ -85,3 +85,31 @@ curl -L -o ~/.local/share/phoenix-ai/models/ggml-small-q5_1.bin \
 
 - **系统级**：在 `modules/nixos/<领域>/` 下新建 `xxx.nix`，加入该领域 `default.nix` 的 `imports`。
 - **用户级**：在 `modules/home/<领域>/` 下新建 `xxx.nix`，加入该领域 `default.nix` 的 `imports`。
+
+## 私密文件清单（SECRET_PATHS.txt）
+
+本仓库只存放可公开的配置，任何密钥、密码、令牌或凭据都**不得提交进仓库**。
+所有私密文件的绝对路径集中记录在主目录的 `~/SECRET_PATHS.txt`，由用户手动管理。
+
+> [!IMPORTANT]
+> 今后新增任何不能公开的文件（密钥、密码 hash、API token、凭据等），
+> 都必须把其绝对路径追加到 `~/SECRET_PATHS.txt`，并且不要提交进本仓库。
+
+## opencode 沙箱
+
+`modules/home/editors/opencode.nix` 把 opencode 包进 bubblewrap，在文件系统层面
+屏蔽 `~/SECRET_PATHS.txt` 里的所有路径，对 opencode 及其**所有子进程**生效：
+
+- 目录被空 tmpfs 覆盖，文件被 `/dev/null` 覆盖（读取返回 permission denied）。
+- 沙箱隔离 USER/PID/IPC/UTS 命名空间，`/proc/*/root` 也无法绕过；无 CAP_SYS_ADMIN。
+- `~/SECRET_PATHS.txt` 本身以只读方式挂载，沙箱内无法篡改清单。
+- `programs.opencode.settings.permission` 另在工具层拒绝读取已知私密路径。
+- 全局提示词写入 `~/.config/opencode/AGENTS.md`，要求遇到受限路径时先询问。
+
+可用命令：
+
+- `opencode` — 默认，屏蔽密钥，保留正常读写。
+- `opencode-ro` — 同上，但除自身数据目录与 `/tmp` 外全盘只读。
+
+修改 `~/SECRET_PATHS.txt` 后，**下次启动** opencode 才会应用新的屏蔽列表。
+需要临时完全不受限时，直接运行 `${pkgs.opencode}/bin/opencode`（不推荐）。

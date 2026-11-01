@@ -17,6 +17,6 @@
   ];
 
   # 启用 WWAN 硬件支持，并确保加载非自由固件
-  hardware.usbWwan.enable = true;
+  hardware.usb-modeswitch.enable = true;
   hardware.firmware = [ pkgs.linux-firmware]; # 包含许多 WWAN 模块的固件
 }

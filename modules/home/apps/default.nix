@@ -4,6 +4,7 @@
   imports = [
     ./lazygit.nix
     ./rmpc.nix
+    ./ssh.nix
     ./clipse.nix
     ./markshot.nix
     ./yazi.nix
