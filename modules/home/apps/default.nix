@@ -3,6 +3,7 @@
 {
   imports = [
     ./lazygit.nix
+    ./rmpc.nix
     ./clipse.nix
     ./markshot.nix
     ./yazi.nix

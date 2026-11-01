@@ -3,5 +3,6 @@
 {
   imports = [
     ./rclone/code-sync.nix
+    ./mpd.nix
   ];
 }

@@ -20,4 +20,7 @@
 
   # 默认启用 rclone code-sync 用户服务。
   my.services.code-sync.enable = true;
+
+  # 默认启用 MPD 用户服务（rmpc 的后端）；音乐库默认 ~/Music。
+  my.services.mpd.enable = true;
 }
