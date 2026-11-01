@@ -7,5 +7,6 @@
     ./clash.nix
     ./cf-warp.nix
     ./rclone-bh-svr-0.nix
+    ./bh-svr-0-route.nix
   ];
 }
