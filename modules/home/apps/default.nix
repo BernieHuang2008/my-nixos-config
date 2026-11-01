@@ -4,5 +4,7 @@
   imports = [
     ./lazygit.nix
     ./clipse.nix
+    ./markshot.nix
+    ./yazi.nix
   ];
 }

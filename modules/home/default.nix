@@ -10,8 +10,6 @@
     ./apps
     ./games
     ./services
-    ./lig.nix
-    ./markshot.nix
   ];
 
   home.username = "bernie";

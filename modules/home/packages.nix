@@ -16,7 +16,6 @@
     python3
     openssh
     xwayland-satellite
-    yazi
     swaybg
     inputs.phoenix-stt.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

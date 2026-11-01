@@ -22,8 +22,8 @@
       ll = "ls -all";
       # App Alias
       l = "lazygit";
-      y = "yazi";
-      v = "neovim";
+      v = "nvim";
+      bt = "bluetoothctl";
     };
 
     history = {

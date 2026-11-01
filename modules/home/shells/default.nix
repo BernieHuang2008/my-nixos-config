@@ -3,5 +3,6 @@
 {
   imports = [
     ./zsh.nix
+    ./lig.nix
   ];
 }
