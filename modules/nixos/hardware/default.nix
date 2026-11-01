@@ -5,5 +5,6 @@
     ./bluetooth.nix
     ./screen.nix
     ./fingerprint.nix
+    ./wwan.nix
   ];
 }
