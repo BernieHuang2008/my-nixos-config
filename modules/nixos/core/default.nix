@@ -8,6 +8,7 @@
     ./locale.nix
     ./fonts.nix
     ./users.nix
+    ./security.nix
     ./zsh.nix
   ];
 }

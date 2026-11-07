@@ -9,5 +9,6 @@
     ./markshot.nix
     ./yazi.nix
     ./neomutt.nix
+    ./mitmproxy.nix
   ];
 }

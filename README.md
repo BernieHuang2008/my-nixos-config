@@ -52,6 +52,7 @@
 - `nrt` — 重建并测试
 - `nrb` — 重建并等待下次启动
 - `ngc` — 清理旧 generation
+- `oc`  — 启动 opencode（沙箱版）
 
 ## Niri 配置
 
@@ -80,6 +81,26 @@ mkdir -p ~/.local/share/phoenix-ai/models
 curl -L -o ~/.local/share/phoenix-ai/models/ggml-small-q5_1.bin \
   https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small-q5_1.bin
 ```
+
+## 抓包（Wireshark / mitmproxy）
+
+- Wireshark 由 `modules/nixos/apps/wireshark.nix` 系统级安装，`bernie` 已在
+  `wireshark` 组中，可直接抓包，无需 sudo。
+- mitmproxy 由 `modules/home/apps/mitmproxy.nix` 安装，用于解密 HTTPS。
+
+首次使用 mitmproxy 前，生成 CA 并把公钥证书纳入系统信任库：
+
+```bash
+mitm-ca-setup
+cd ~/dotfiles
+git add modules/nixos/core/mitmproxy-ca-cert.pem
+git commit -m "add mitmproxy CA"
+nrs
+```
+
+`mitm-ca-setup` 把 CA 私钥留在 `~/.mitmproxy/`，只把公钥证书复制进仓库；
+请把 `~/.mitmproxy/` 追加到 `~/SECRET_PATHS.txt`。之后用 mitmproxy 代理流量，
+即可在 Wireshark 中通过该 CA 解密 HTTPS。
 
 ## 添加新软件
 

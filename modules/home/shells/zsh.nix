@@ -24,6 +24,7 @@
       l = "lazygit";
       v = "nvim";
       bt = "bluetoothctl";
+      oc = "opencode";
     };
 
     history = {

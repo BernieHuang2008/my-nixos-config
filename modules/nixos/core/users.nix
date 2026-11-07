@@ -12,6 +12,7 @@
       "wheel"
       "networkmanager"
       "docker"
+      "wireshark"
     ];
     description = "Bernie J. Huang";
     shell = pkgs.zsh;

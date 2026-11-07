@@ -8,6 +8,7 @@
     ./obs-studio.nix
     ./wechat.nix
     ./wemeet.nix
+    ./wireshark.nix
     ./packages.nix
   ];
 }
