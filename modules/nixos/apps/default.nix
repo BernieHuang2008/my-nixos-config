@@ -5,6 +5,9 @@
     ./chromium.nix
     ./onlyoffice.nix
     ./steam.nix
+    ./obs-studio.nix
+    ./wechat.nix
+    ./wemeet.nix
     ./packages.nix
   ];
 }
