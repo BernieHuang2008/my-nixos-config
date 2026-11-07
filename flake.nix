@@ -40,6 +40,7 @@
           nixpkgs.overlays = [
             (final: prev: {
               pam-fprint-grosshack = final.callPackage ./pkgs/pam-fprint-grosshack.nix { };
+              wechat = final.callPackage ./pkgs/wechat.nix { };
             })
           ];
         }
