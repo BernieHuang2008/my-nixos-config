@@ -68,7 +68,7 @@
 
 - 包：`inputs.phoenix-stt.packages.${pkgs.system}.default`
 - 启动：niri `spawn-at-startup "phoenix-stt" "daemon"`
-- 快捷键：`Mod+Shift+D`（开始/停止录音）
+- 快捷键：`Alt+Alt_R`（右 Alt，开始/停止录音）
 - 配置：`config/phoenix-ai/stt.toml` → `~/.config/phoenix-ai/config/stt.toml`
 - 密钥：`~/.config/phoenix-ai/secrets/models.json`（手动管理，权限 600，不纳入仓库）
 - whisper 模型：`~/.local/share/phoenix-ai/models/ggml-small-q5_1.bin`

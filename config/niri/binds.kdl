@@ -5,11 +5,11 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    XF86Mail hotkey-overlay-title="Open Mail: neomutt" { spawn "alacritty" "--class" "neomutt" "-e" "neomutt"; }
+    XF86Mail { spawn "alacritty" "--class" "neomutt" "-e" "neomutt"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Super+Shift+V { spawn "alacritty" "--class" "clipse" "-o" "window.opacity=1.0" "-e" "clipse"; }
-    Alt_R { spawn "phoenix-stt" "toggle"; }
+    Alt+Alt_R { spawn "phoenix-stt" "toggle"; }
 
     // 音量
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume raise"; }
