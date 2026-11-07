@@ -8,5 +8,6 @@
     ./clipse.nix
     ./markshot.nix
     ./yazi.nix
+    ./aerc.nix
   ];
 }
