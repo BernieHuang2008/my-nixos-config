@@ -8,6 +8,8 @@
     enable = true;
     extensions = [
       "dbepggeogbaibhgnhhndojpepiihcmeb"  # Vimium
+      "dhdgffkkebhmkfjojejmpbldmpobfkfo"  # Temper Monkey
+      "nfmmmhanepmpifddlkkmihkalkoekpfd"  # m3u8 sniffer
     ];
 
     extraOpts = {
