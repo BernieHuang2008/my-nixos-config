@@ -6,5 +6,6 @@
     ./screen.nix
     ./fingerprint.nix
     ./wwan.nix
+    ./graphics.nix
   ];
 }
