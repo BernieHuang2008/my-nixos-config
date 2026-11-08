@@ -7,5 +7,13 @@
     remotePlay.openFirewall = true;       # Steam 远程同乐
     dedicatedServer.openFirewall = true;  # 源服务器
     localNetworkGameTransfers.openFirewall = true; # 本地网络传输
+
+    # 显式指定 Steam/Proton 环境可用的字体
+    fontPackages = with pkgs; [
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      source-han-sans
+      source-han-serif
+    ];
   };
 }
