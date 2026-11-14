@@ -4,6 +4,8 @@
   imports = [
     ./home-manager.nix
     ./docker.nix
+    ./kali.nix
+    ./libvirt.nix
     ./clash.nix
     ./cf-warp.nix
     ./rclone-bh-svr-0.nix

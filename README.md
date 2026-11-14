@@ -102,6 +102,46 @@ nrs
 请把 `~/.mitmproxy/` 追加到 `~/SECRET_PATHS.txt`。之后用 mitmproxy 代理流量，
 即可在 Wireshark 中通过该 CA 解密 HTTPS。
 
+## Chromium 书签固化
+
+`modules/nixos/apps/chromium.nix` 通过 `ManagedBookmarks` 策略下发书签。它们会出现在
+Chromium 的“受管理的书签”文件夹中，用户无法删除或修改；修改该文件后重新构建即可更新。
+
+## Kali 容器（可选）
+
+Kali 由 `modules/nixos/services/kali.nix` 管理，开关是 `my.services.kali.enable`
+（`hosts/bh-laptop-1/default.nix` 中已打开）。首次运行：
+
+```bash
+kali
+```
+
+如果本地镜像不存在，会先用 `kalilinux/kali-rolling:latest` 构建 `kali-full:latest`，
+默认安装 `kali-linux-everything`（几乎全部工具，镜像非常大，首次构建耗时较长）。
+可手动执行 `kali-image-build` 重建，或在模块里把 `packages` 改成
+`kali-linux-headless` / `kali-linux-default` 以减小体积。
+
+## KVM 与 Windows 11
+
+`modules/nixos/services/libvirt.nix` 启用 KVM、libvirt、TPM 2.0、SPICE 和 virt-manager，
+并自动定义 libvirt 的 `default` NAT 网络。把 Windows 11 ISO 准备好后执行：
+
+```bash
+win11-vm-create /path/to/Win11.iso
+```
+
+默认创建 4 vCPU、8 GiB 内存、64 GiB 磁盘的虚拟机，使用 UEFI Secure Boot 和 TPM 2.0。
+为了安装阶段免驱，默认磁盘为 SATA、网卡为 e1000e；virtio-win 驱动 ISO 已挂载为第二张
+光盘（`/etc/virtio-win.iso`）。装好系统后可在 Windows 中安装 virtio 驱动，再用
+virt-manager 把磁盘/网卡改成 virtio 以获得更好性能。磁盘/网卡可通过环境变量覆盖：
+
+```bash
+VM_DISK_BUS=virtio VM_NIC_MODEL=virtio win11-vm-create /path/to/Win11.iso
+```
+
+虚拟机管理使用 `virt-manager`。如果 `win11-vm-create` 提示没有 KVM，请在 BIOS 中开启
+Intel VT-x / AMD-V。
+
 ## 添加新软件
 
 - **系统级**：在 `modules/nixos/<领域>/` 下新建 `xxx.nix`，加入该领域 `default.nix` 的 `imports`。

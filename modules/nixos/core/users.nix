@@ -13,6 +13,7 @@
       "networkmanager"
       "docker"
       "wireshark"
+      "libvirtd"
     ];
     description = "Bernie J. Huang";
     shell = pkgs.zsh;
