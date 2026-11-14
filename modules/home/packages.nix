@@ -16,6 +16,7 @@ in
   home.packages = with pkgs; [
     wget
     curl
+    ffmpeg
     git
     zsh
     oh-my-zsh
