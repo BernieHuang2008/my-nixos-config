@@ -1,4 +1,4 @@
-{ lib, appimageTools, fetchurl }:
+{ lib, appimageTools, fetchurl, pkgs }:
 
 let
   pname = "wechat";
@@ -12,10 +12,19 @@ let
   appimageContents = appimageTools.extract {
     inherit pname version src;
   };
+
+  # WeChat 自带 fcitx5 的 Qt 输入法插件，但默认不设置 QT_IM_MODULE；
+  # 在 Wayland 下不设置就无法用 fcitx5 输入中文。
+  launcher = pkgs.writeShellScript "wechat-launcher" ''
+    export QT_IM_MODULE=fcitx
+    exec appimage-exec.sh -w ${appimageContents} -- "$@"
+  '';
 in
 appimageTools.wrapAppImage {
   inherit pname version;
   src = appimageContents;
+
+  runScript = launcher;
 
   meta = {
     description = "Messaging and calling app";
