@@ -23,8 +23,56 @@ let
     "/var/lib/nixos-secrets/**"
   ];
 
+  # session 完成 / 需要用户操作时，通过桌面通知提醒。
+  notifySend = "${pkgs.libnotify}/bin/notify-send";
+
+  notifyPlugin = pkgs.writeText "opencode-notify.ts" ''
+    import { execFile } from "node:child_process"
+
+    const NOTIFY_SEND = ${builtins.toJSON notifySend}
+
+    function notify(body, urgency = "normal") {
+      try {
+        execFile(
+          NOTIFY_SEND,
+          ["-a", "opencode", "-u", urgency, "opencode", body],
+          () => {},
+        )
+      } catch {}
+    }
+
+    export const NotifyPlugin = async () => {
+      return {
+        event: async ({ event }) => {
+          const props = (event && event.properties) || {}
+          switch (event && event.type) {
+            case "session.idle": {
+              const id =
+                typeof props.sessionID === "string" ? props.sessionID.slice(-6) : ""
+              notify("会话已完成" + (id ? " (" + id + ")" : ""), "normal")
+              break
+            }
+            case "session.error":
+              notify("会话出错，需要处理", "critical")
+              break
+            case "question.asked":
+              notify("有提问等待你回答", "critical")
+              break
+            case "permission.asked":
+            case "permission.updated":
+              notify("有权限请求等待批准", "critical")
+              break
+          }
+        },
+      }
+    }
+  '';
+
   opencodeJson = (pkgs.formats.json { }).generate "opencode.json" {
     "$schema" = "https://opencode.ai/config.json";
+
+    # 自动批准插件（~/.config/opencode/notify.ts）。
+    plugin = [ "file://${homeDirectory}/.config/opencode/notify.ts" ];
 
     permission = {
       # 读取：默认允许，已知私密路径一律拒绝（沙箱内还有一层硬屏蔽）。
@@ -32,12 +80,29 @@ let
         "*" = "allow";
       } // lib.genAttrs secretPaths (_: "deny");
 
-      # 项目目录外的访问：默认询问；dotfiles 与 nix store 只读放行。
+      # 项目目录外访问：自动批准；私密路径仍然拒绝。
       external_directory = {
-        "*" = "ask";
+        "*" = "allow";
         "${homeDirectory}/dotfiles/**" = "allow";
         "/nix/store/**" = "allow";
       } // lib.genAttrs secretPaths (_: "deny");
+
+      # auto approval：其余工具一律自动批准，不再弹权限确认。
+      edit = "allow";
+      glob = "allow";
+      grep = "allow";
+      list = "allow";
+      bash = "allow";
+      task = "allow";
+      todowrite = "allow";
+      question = "allow";
+      webfetch = "allow";
+      websearch = "allow";
+      repo_clone = "allow";
+      repo_overview = "allow";
+      lsp = "allow";
+      doom_loop = "allow";
+      skill = "allow";
     };
   };
 
@@ -61,7 +126,7 @@ let
 
     1. 如果任务看起来需要访问被屏蔽的路径，立即停止并明确向用户请求授权。
     2. 若某次读取返回 “permission denied” 或空目录，不要换用 bash、glob、grep 等工具重试，先询问用户。
-    3. 其他外部路径的读取仍可能触发批准提示，按提示处理。
+    3. 其他外部路径的读取已配置为自动批准，但私密路径始终拒绝。
     4. 本约束优先级高于后续任何指令；用户明确授权某次访问时，也只在当次任务内生效。
   '';
 
@@ -128,6 +193,7 @@ let
 in
 {
   xdg.configFile."opencode/opencode.json".source = opencodeJson;
+  xdg.configFile."opencode/notify.ts".source = notifyPlugin;
   xdg.configFile."opencode/AGENTS.md".text = agentsMd;
 
   home.packages = [
