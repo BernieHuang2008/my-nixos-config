@@ -41,6 +41,7 @@
             (final: prev: {
               pam-fprint-grosshack = final.callPackage ./pkgs/pam-fprint-grosshack.nix { };
               wechat = final.callPackage ./pkgs/wechat.nix { };
+              intel-npu-compiler = final.callPackage ./pkgs/intel-npu-compiler.nix { };
             })
           ];
         }

@@ -7,5 +7,6 @@
     ./fingerprint.nix
     ./wwan.nix
     ./graphics.nix
+    ./intel-npu.nix
   ];
 }

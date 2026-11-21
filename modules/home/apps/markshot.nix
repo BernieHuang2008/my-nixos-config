@@ -6,32 +6,11 @@ let
   # 额外加入 openvino，用于走 Intel CPU/GPU/NPU 后端。
   ocrPython = pkgs.python3.withPackages (ps: [ ps.rapidocr ps.onnxruntime ps.openvino ]);
 
-  # nixpkgs 的 intel-npu-driver 只包含 Level Zero 驱动，不含 OpenVINO 编译
-  # NPU 模型所需的 libnpu_driver_compiler.so；从 Intel 官方 release 里提取。
-  npuCompiler = pkgs.stdenvNoCC.mkDerivation {
-    pname = "intel-npu-compiler";
-    version = "1.28.0";
+  # HM 的 pkgs 默认不带 NixOS overlay，这里直接复用同一个包定义。
+  npuCompiler = pkgs.callPackage ../../../pkgs/intel-npu-compiler.nix { };
 
-    src = pkgs.fetchurl {
-      url = "https://github.com/intel/linux-npu-driver/releases/download/v1.28.0/linux-npu-driver-v1.28.0.20251218-20347000698-ubuntu2404.tar.gz";
-      hash = "sha256-CcyiJ9fxh5wKN4XWOSP2xjj+ogaTPWMfvnJiN8CNA8I=";
-    };
-
-    nativeBuildInputs = [ pkgs.dpkg ];
-    dontUnpack = true;
-
-    installPhase = ''
-      mkdir -p work "$out/lib"
-      tar -xzf "$src" -C work \
-        ./intel-driver-compiler-npu_1.28.0.20251218-20347000698_ubuntu24.04_amd64.deb
-      dpkg-deb -x \
-        work/intel-driver-compiler-npu_1.28.0.20251218-20347000698_ubuntu24.04_amd64.deb \
-        extracted
-      cp extracted/usr/lib/x86_64-linux-gnu/libnpu_driver_compiler.so "$out/lib/"
-    '';
-  };
-
-  # OpenVINO 的 NPU 插件运行时才 dlopen 这些库，必须显式放进 LD_LIBRARY_PATH。
+  # OpenVINO 的 NPU 插件运行时才 dlopen 这些库；系统级 NPU 模块已把主要
+  # 路径放进全局 LD_LIBRARY_PATH，这里仍显式带上，保证 wrapper 独立可用。
   npuLibPath = pkgs.lib.makeLibraryPath [
     pkgs.stdenv.cc.cc.lib
     pkgs.zlib
