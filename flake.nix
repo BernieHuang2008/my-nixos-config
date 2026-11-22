@@ -26,26 +26,33 @@
     };
   };
 
-  outputs = { self, nixpkgs, monique, home-manager, ... }@inputs: {
-    # 每台主机在此登记；`nixos-rebuild --flake ~/dotfiles#bh-laptop-1` 即可。
-    nixosConfigurations."bh-laptop-1" = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, monique, home-manager, ... }@inputs:
+    let
       system = "x86_64-linux";
+      overlay = final: prev: {
+        pam-fprint-grosshack = final.callPackage ./pkgs/pam-fprint-grosshack.nix { };
+        wechat = final.callPackage ./pkgs/wechat.nix { };
+        intel-npu-compiler = final.callPackage ./pkgs/intel-npu-compiler.nix { };
+        alacritty-wrightty = final.callPackage ./pkgs/alacritty-wrightty.nix { };
+        wrightty = final.callPackage ./pkgs/wrightty.nix { };
+        alacritty = final.alacritty-wrightty;
+      };
+    in
+    {
+      # 每台主机在此登记；`nixos-rebuild --flake ~/dotfiles#bh-laptop-1` 即可。
+      nixosConfigurations."bh-laptop-1" = nixpkgs.lib.nixosSystem {
+        inherit system;
 
-      # 把 inputs 透传给所有模块，方便模块里直接使用 `inputs.xxx`。
-      specialArgs = { inherit inputs; };
+        # 把 inputs 透传给所有模块，方便模块里直接使用 `inputs.xxx`。
+        specialArgs = { inherit inputs; };
 
-      modules = [
-        ./hosts/bh-laptop-1
-        {
-          nixpkgs.overlays = [
-            (final: prev: {
-              pam-fprint-grosshack = final.callPackage ./pkgs/pam-fprint-grosshack.nix { };
-              wechat = final.callPackage ./pkgs/wechat.nix { };
-              intel-npu-compiler = final.callPackage ./pkgs/intel-npu-compiler.nix { };
-            })
-          ];
-        }
-      ];
+        modules = [
+          ./hosts/bh-laptop-1
+          {
+            nixpkgs.overlays = [ overlay ];
+            home-manager.users.bernie.nixpkgs.overlays = [ overlay ];
+          }
+        ];
+      };
     };
-  };
 }
