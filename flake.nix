@@ -36,6 +36,9 @@
         alacritty-wrightty = final.callPackage ./pkgs/alacritty-wrightty.nix { };
         wrightty = final.callPackage ./pkgs/wrightty.nix { };
         alacritty = final.alacritty-wrightty;
+        chromium = prev.chromium.override {
+          commandLineArgs = "--force-renderer-accessibility";
+        };
       };
     in
     {
