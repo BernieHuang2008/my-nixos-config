@@ -4,6 +4,7 @@
   fetchFromGitHub,
   rustPlatform,
   runtimeShell,
+  iproute2,
 
   cmake,
   installShellFiles,
@@ -85,7 +86,8 @@ rustPlatform.buildRustPackage {
       --replace xdg-open ${xdg-utils}/bin/xdg-open
   '' + ''
     substituteInPlace alacritty/src/wrightty.rs \
-      --replace-fail '258EAFA5-E914-47DA-95CA-5AB5DC11C65B' '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
+      --replace-fail '258EAFA5-E914-47DA-95CA-5AB5DC11C65B' '258EAFA5-E914-47DA-95CA-C5AB0DC85B11' \
+      --replace-fail 'reader.read_line(&mut line)?;' 'if reader.read_line(&mut line)? == 0 { return Ok(()); }'
   '';
 
   postInstall = ''
@@ -119,7 +121,8 @@ rustPlatform.buildRustPackage {
     install -m755 ${./alacritty-wrightty-wrapper.sh} $out/bin/alacritty
     substituteInPlace $out/bin/alacritty \
       --replace-fail '@shell@' "${runtimeShell}" \
-      --replace-fail '@alacritty@' "$out/bin/.alacritty-wrightty"
+      --replace-fail '@alacritty@' "$out/bin/.alacritty-wrightty" \
+      --replace-fail '@ss@' "${iproute2}/bin/ss"
   '';
 
   dontPatchELF = true;

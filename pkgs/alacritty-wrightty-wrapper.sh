@@ -11,7 +11,7 @@ done
 
 port=9420
 while [ "$port" -le 9500 ]; do
-  if ! (exec 3<>"/dev/tcp/127.0.0.1/$port") 2>/dev/null; then
+  if [ -z "$(@ss@ -H -ltn "sport = :$port" 2>/dev/null)" ]; then
     WRIGHTTY_PORT="$port"
     WRIGHTTY_SOCKET="ws://127.0.0.1:$port"
     export WRIGHTTY_PORT WRIGHTTY_SOCKET
