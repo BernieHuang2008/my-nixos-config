@@ -10,5 +10,6 @@
     ./yazi.nix
     ./neomutt.nix
     ./mitmproxy.nix
+    ./chroncal.nix
   ];
 }

@@ -24,6 +24,11 @@
       url = "github:BernieHuang2008/phoenix-stt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    chroncal = {
+      url = "github:DouglasdeMoura/chroncal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, monique, home-manager, ... }@inputs:
